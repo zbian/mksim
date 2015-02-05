@@ -1,8 +1,0 @@
-{
-  "scripts":{
-    "tower-one":{"ID":"tower-one","name":"刷塔"},
-    "tower-678":{"ID":"tower-678","name":"刷678塔"},
-    "user":{"ID":"user","name":"打印用户信息"},
-    "award":{"ID":"award","name":"领取奖励"}
-  }
-}
