@@ -27,6 +27,7 @@ function show_award(context, cmd, next) {
 	},function(err, data){
 		if (!err && data.status == 1) {
 			data.data.SalaryInfos.forEach(function(award){
+				console.log(award);
 				logger.log(context,"奖励："+ (awardTypes[award.AwardType] || award.AwardType) + (award.AwardValue ? award.AwardValue : JSON.stringify(award)) )
 			})
 			if (data.data.SalaryInfos.length > 0)

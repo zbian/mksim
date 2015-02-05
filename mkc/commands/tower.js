@@ -116,7 +116,10 @@ function do_battle(context, cmd, tower, layer, boxes, monsters, next){
 			} else {
 				var Award = data.data.ExtData.Award;
 				console.log(Award);
-				logger.log(context,"金币: "+Award.Coins+", 经验: "+Award.Exp+", 卡牌: " + get_card(Award.CardId))
+				var card = get_card(Award.CardId || undefined).value();
+				if (card && card.Color >= 4) {
+					logger.log(context,"金币: "+Award.Coins+", 经验: "+Award.Exp+", 卡牌: " + card.CardName);
+				}
 				do_battle(context, cmd, tower, layer, boxes, monsters, next);
 			}
 
