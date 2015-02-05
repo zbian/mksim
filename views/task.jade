@@ -1,0 +1,123 @@
+extends normal
+
+block page-content
+  div.well
+    div.tabbable.tabbable-custom.boxless
+      ul.nav.nav-tabs
+        li
+          a(href='#tasks',data-toggle='tab') 任务列表
+        li.active
+          a(href='#create_task',data-toggle='tab') 添加任务
+      div.tab-content
+        div.tab-pane#tasks
+          div.portlet
+            div.portlet-body
+              table.table.table-hover.table-stripped
+                thead
+                  tr
+                    td
+                    each v in ['Users','Time','Task','Cond']
+                      th= v
+                    th
+                      a.btn.yellow(href='/')
+                        i.icon-refresh  刷新
+                  each tsk in tasks || []
+                    tr
+                      td(style='width:16px')
+                        i(class=tsk['enable']?'icon-ok green':'')
+                      each v in ['User','Time','Task','Cond']
+                        td= tsk[v] || '-'
+                      td
+                        if tsk['enable']
+                          a.btn.red 停用
+                        else
+                          a.btn.green 启用
+        div.tab-pane.active#create_task
+          div.portlet
+            div.portlet-body
+              form#create_task_form.form-horizontal(method="POST",action="/task")
+                div.control-group
+                  label.control-label 账户选择
+                  div.controls
+                    each acc in accounts || []
+                      label.checkbox
+                        input(name="account",type="checkbox",value=acc["ID"])
+                        =acc["ID"]
+                div.control-group
+                  div.controls
+                    a#unselect_all_accounts.btn.grey 全不选
+                    span
+                    a#reverse_all_accounts.btn.purple 反向选择
+                    span
+                    a#select_all_accounts.btn.yellow 全选
+                    span
+                div.control-group
+                  label.control-label 脚本选择
+                  div.controls
+                    select.medium.m-wrap(name="script")
+                      each op in mkscripts || []
+                        option(value=op.ID)=op.name
+                div.control-group
+                  label.control-label 参数设置
+                  div.controls
+                    input.medium.m-wrap(name="arguments",type="text",placeholder="请输入参数")
+                div.form-actions
+                  button.btn.blue(type='submit')
+                    i.icon-ok
+                    |  现在执行
+                  | 
+                  a#clear_log.btn.grey(href="javascript:;")
+                    i.icon-brush
+                    |  清除日志
+                  | 
+              ul#messages
+
+
+
+block script
+  script(type='text/javascript',src='/plugins/jquery-validation/lib/jquery.form.js')
+  script(type='text/javascript',src='https://cdn.socket.io/socket.io-1.3.2.js')
+  script.
+    $(function(){
+      var socket = io();
+      App.init()
+      socket.on('#{user.user}',function(msg){
+        $('#messages').prepend($('<li>').text(msg))
+      })
+      $("#select_all_accounts").click(function(){
+        $("input[name='account']").attr("checked", true);
+        $.uniform.update($("input[name='account']"))
+      })
+      $("#unselect_all_accounts").click(function(){
+        $("input[name='account']").attr("checked", false);
+        $.uniform.update($("input[name='account']"))
+      })
+      $("#reverse_all_accounts").click(function(){
+        $("input[name='account']").each(function(){
+          console.log('each');
+          $(this).attr('checked',!this.checked);
+          $.uniform.update($(this))
+        })
+      })
+      $("#clear_log").click(function(){
+        $('#messages').empty();
+      })
+      var loader = $("<div id='loader'><img src='/images/loading.gif' alt='loading...'/></div>").css({position: 'relative', top:'1em', left:'25em', display:'inline'}).appendTo('#create_task_form').hide()
+      $().ajaxStart(function(){
+        loader.show();
+      }).ajaxStop(function(){
+        loader.hide();
+      }).ajaxError(function(a,b,e){throw e;})
+
+      var v = $("#create_task_form").validate({
+        submitHandler: function(form){
+          console.log(form);
+          $(form).ajaxSubmit({
+            dataType:'json',
+            success:function(data){
+            }
+          })
+        }
+      })
+    })
+

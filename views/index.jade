@@ -1,0 +1,80 @@
+extends normal 
+
+block page-content
+  div.well
+    div(class='tabbable tabbable-custom boxless')
+      ul(class='nav nav-tabs')
+        li(class='active')
+          a(href='#accounts' data-toggle='tab') 帐户列表
+        li
+          a(href='#create_account' data-toggle='tab') 添加帐户
+      div(class='tab-content')
+        div#accounts(class='tab-pane active')
+          div.portlet
+            div.portlet-body
+              table.table.table-hover.table-stripped
+                thead
+                  tr
+                    td
+                    each v in ['ID','Lv','$','d','HP','Enemy','Tower']
+                      th= v
+                    th
+                      a.btn.yellow(href='/')
+                        i.icon-refresh  刷新
+                  each acc in accounts || []
+                    tr
+                      td(style='width:16px')
+                        i(class=acc['enable']?'icon-ok green':'')
+                      each v in ['ID','Lv','$','d','HP','Enemy','Tower']
+                        td= acc[v] || '-'
+                      td
+                        if acc['enable']
+                          a.btn.red 停用
+                        else
+                          a.btn.green 启用
+        div#create_account(class='tab-pane')
+          div.portlet
+            div.portlet-body
+              form#create_account_form.form-horizontal(method="POST",action='/account')
+                div.control-group
+                  label.control-label 账户
+                  div.controls
+                    input.m-wrap.small.required(name='account',type='text',placeholder='账户名称')
+                div.control-group
+                  label.control-label 密码
+                  div.controls
+                    input.m-wrap.small.required(name='password',type='text',placeholder='密码')
+                div.form-actions
+                  button.btn.blue(type='submit')
+                    i.icon-ok
+                    | 保存
+                  | 
+                  button.btn.grey(type='reset') 清空
+
+block script
+  script(type='text/javascript',src='/plugins/jquery-validation/lib/jquery.form.js')
+  script.
+    $(function(){
+      var loader = $("<div id='loader'><img src='/images/loading.gif' alt='loading...'/></div>").css({position: 'relative', top:'1em', left:'25em', display:'inline'}).appendTo('#create_account_form').hide()
+      $().ajaxStart(function(){
+        loader.show();
+      }).ajaxStop(function(){
+        loader.hide();
+      }).ajaxError(function(a,b,e){throw e;})
+
+      var v = $("#create_account_form").validate({
+        submitHandler: function(form){
+          $(form).ajaxSubmit({
+            target:'#create_account_result',
+            dataType:'json',
+            success:function(data){
+                $("input[name='account']").val('');
+    //          v.resetForm();
+            }
+          })
+        }
+      })
+      $("#create_account_result input[type='reset']").click(function(){
+        v.resetForm();
+      })
+    })

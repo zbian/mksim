@@ -1,0 +1,8 @@
+body{font-size:12px;font-family:verdana, arial, helvetica, sans-serif;}
+/*css msdn style pagination*/
+div.msdn{padding:4px 6px 4px 0;font-size:13px;color:#313031;font-family:verdana,tahoma,arial,helvetica,sans-serif;background-color:#fff;text-align:right;}
+div.msdn a{border:#DDDDDD 1px solid;padding:5px 6px 4px 5px;margin:0px 3px;color:#0030ce;text-decoration:none;}
+div.msdn a:hover{border:#DDDDDD 1px solid;color:#005580;background-color:#F5F5F5;}
+div.pagination a:active{border:#DDDDDD 1px solid;color:#005580;background-color:#F5F5F5;}
+div.msdn span.current{border:#DDDDDD 1px solid;padding:5px 6px 4px 5px;font-weight:bold;margin:0px 3px;color:#555555;background-color:#F5F5F5;}
+div.msdn span.disabled{display:none;}

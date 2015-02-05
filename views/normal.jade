@@ -1,0 +1,19 @@
+extends layout 
+
+block content
+  div.page-header-fixed.page-full-width
+    div(class='header navbar navbar-inverse navbar-fixed-top')
+      div(class='navbar-inner')
+        div(class='container-fluid')
+          div(class='navbar hor-menu hidden-phone hidden-tablet')
+            div(class='navbar-inner')
+              ul(class='nav')
+                include menu
+          a.btn-navbar.collapsed(href='javascript:;',data-toggle='collapse',data-target='.nav-collapse')
+            img(src='/images/menu-toggler.png',alt='')
+    div.page-container.row-fluid
+      div.page-sidebar.nav-collapse.collapse.visible-phone.visible-tablet
+        ul.page-sidebar-menu
+          include menu
+      div.page-content
+        block page-content

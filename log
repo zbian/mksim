@@ -1,0 +1,62 @@
+RUN [ 'LOGIN' ]
+LOGIN for zbianr with ererer12
+eyJ1c2VyTmFtZSI6InpiaWFuciIsInVzZXJQYXNzd29yZCI6ImVyZXJlcjEyIiwiZ2FtZU5hbWUiOiJDQVJELUlQSE9ORS1DSFMiLCJ1ZGlkIjoiNzQtRTUtNDMtQzItM0QtREIiLCJpZGZhIjoiIiwiY2xpZW50VHlwZSI6ImZsYXNoIiwicmVsZWFzZUNoYW5uZWwiOiIiLCJsb2NhbGUiOiJjaHMifQ==
+OK
+{ account: { ID: 'zbianr', password: 'ererer12' },
+  user: { user: 'zhen' },
+  idx: 0,
+  stack: [],
+  cmds: [ [ 'LOGIN' ], [ 'USER' ], [ 'DEBUG', 'user' ], [ 'LOGOUT' ] ],
+  data: { macAddress: '74-E5-43-C2-3D-DB' },
+  httpAgent: 
+   { domain: null,
+     _events: { free: [Object], timeout: [Function], close: [Function] },
+     _maxListeners: 10,
+     defaultPort: 80,
+     protocol: 'http:',
+     options: 
+      { keepAlive: true,
+        keepAliveTimeout: 30000,
+        timeout: 60000,
+        maxFreeSockets: 10,
+        maxSockets: 100,
+        path: null },
+     requests: {},
+     sockets: {},
+     freeSockets: {},
+     keepAliveMsecs: 1000,
+     keepAlive: true,
+     keepAliveTimeout: 30000,
+     timeout: 60000,
+     maxSockets: 100,
+     maxFreeSockets: 10,
+     createSocketCount: 0,
+     closeSocketCount: 0,
+     requestCount: 0,
+     timeoutSocketCount: 0 },
+  server: 
+   { GS_NAME: 'server29',
+     GS_IP: 'http://s29.mysticalcard.com/',
+     friendCode: 'null',
+     GS_PORT: '80',
+     timestamp: '1422879820338',
+     GS_CHAT_PORT: '8000',
+     source: 'zbianr',
+     userName: 'zbianr',
+     GS_DESC: '迷魅灵狐',
+     U_ID: '5006895645',
+     uEmailState: '0',
+     G_TYPE: '1',
+     key: 'f8c30df3580cb185829d7cf9df975b85',
+     GS_CHAT_IP: '218.245.7.107' } }
+gbmvd8wkgbuhtpeJyVkT1Ow0AQhe/igoo46794jZTCsg22BImFQwGN5azXYYX/tF4nCoiCgoqGi1AiSo4D3IJZLCKEaOhmv5n3ZvT2Rqmuu5VyoOTNNM66rm24OG5WrN5bTw3TxHvtZdtOo3kii3J6EabeTNlXBKsoiDRT17HtYF2zJxbgs47yWfbVul6yrObA4jiV053IqvanBBkGlm1Yuml4Di0LoQl2rIkpra7oFlCBiYHywrAwIksNW1h3cpsUTl44trXE1uB/lKTx/HQB8xgBadsV3FAPd3juqT+K4nA+C0ZemAyCruk5+X0luEQxsEsh2oPxuNMdtdp2gpGsJBnPVdJUY5is6WbVsxzU2rfMC93FoNU1rOqmpdqqhuzBtuCM1rnXSIVS92UpPUgto0DyWp+uGaGiuaKSAZhzBvkPdeQfukMFTv+KJF2cx4FcMrzP0sj/HTHg/u8P64MqY2UiMiE7aJfPzD2RniBaU647O+4HiQf8/fXl4+n+7e757eFRuf0E3MeyHQ==_-()+15ebf9a59893a34809c3573b7051f678
+z=gbmvd8wkgbuhtpeJyVkT1Ow0AQhe%2Figoo46794jZTCsg22BImFQwGN5azXYYX%2FtF4nCoiCgoqGi1AiSo4D3IJZLCKEaOhmv5n3ZvT2Rqmuu5VyoOTNNM66rm24OG5WrN5bTw3TxHvtZdtOo3kii3J6EabeTNlXBKsoiDRT17HtYF2zJxbgs47yWfbVul6yrObA4jiV053IqvanBBkGlm1Yuml4Di0LoQl2rIkpra7oFlCBiYHywrAwIksNW1h3cpsUTl44trXE1uB%2FlKTx%2FHQB8xgBadsV3FAPd3juqT%2BK4nA%2BC0ZemAyCruk5%2BX0luEQxsEsh2oPxuNMdtdp2gpGsJBnPVdJUY5is6WbVsxzU2rfMC93FoNU1rOqmpdqqhuzBtuCM1rnXSIVS92UpPUgto0DyWp%2BuGaGiuaKSAZhzBvkPdeQfukMFTv%2BKJF2cx4FcMrzP0sj%2FHTHg%2Fu8P64MqY2UiMiE7aJfPzD2RniBaU647O%2B4HiQf8%2FfXl4%2Bn%2B7e757eFRuf0E3MeyHQ%3D%3D&b=1efcf46df1da274ec71faf5e631cb73f
+{ status: 0, message: 'passport签名验证失败!', type: 0 }
+RUN [ 'USER' ]
+User for zbianr with ererer12
+lnyjb6pvhqyqeJyrVsqtKk5XslJKybd1Ty0JLU4tysxLy1fzL0jNc04sSnHOyCywNVQryCgosPX0DwYxcmyjPOKd/ZR0lArKCvxSy8NSi4oz8/OUrAx1lPKSgbSSoYGBUi0AiOwdyQ==_-()+15ebf9a59893a34809c3573b7051f678
+z=lnyjb6pvhqyqeJyrVsqtKk5XslJKybd1Ty0JLU4tysxLy1fzL0jNc04sSnHOyCywNVQryCgosPX0DwYxcmyjPOKd%2FZR0lArKCvxSy8NSi4oz8%2FOUrAx1lPKSgbSSoYGBUi0AiOwdyQ%3D%3D&b=1f585cf24543eacd456b1ac29cc8dc85
+{ status: 0, message: '网络链接已断开 请重新登录', type: 1 }
+SKIP [ 'DEBUG', 'user' ]
+SKIP [ 'LOGOUT' ]
+END
