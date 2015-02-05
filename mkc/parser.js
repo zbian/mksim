@@ -16,10 +16,11 @@ var PARSER = {
 	'buildIDWithContext': function(context){
 		return PARSER.buildID(context.user, context.account)
 	},
-	'execute': function(user, account, cmd) {
+	'execute': function(user, account, cmd, cb) {
 		console.log('EXECUTE',user,account,cmd);
 		fs.readFile(__dirname+'/../storage/'+cmd[0]+".mkc", function(err, data){
 			data = data.toString();
+			console.log(data);
 			for(var i=1;i<cmd.length;i++) {
 				var regExp = new RegExp("\\{"+i+"\\}", "gi");
 				data = data.replace(regExp, cmd[1])
@@ -32,7 +33,7 @@ var PARSER = {
 				var cmds = 
 				_.chain(data.toString().split("\n"))
 				.compact()
-				.map(function(n){return n.split(' ')})
+				.map(function(n){return _.map(n.split(' '), function(j){return j.trim()});})
 				.filter(function(n){return n[0][0] != '#'})
 				.value()
 
@@ -53,7 +54,8 @@ var PARSER = {
 					Cookie: Cookie,
 					first: true,
 					seq: Math.floor(Math.random() * 10000),
-					parser: PARSER
+					parser: PARSER,
+					end_cb: cb
 				}
 				function next(){
 					context.idx ++ ;
@@ -74,6 +76,8 @@ var PARSER = {
 		if (context.idx >= context.cmds.length) {
 			logger.end(context);
 			console.log("END");
+			if (context.end_cb)
+				context.end_cb()
 			return;
 		}
 		var cmd = context.cmds[context.idx];

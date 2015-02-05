@@ -4,6 +4,7 @@ var logger = require('../logger')
 var get_card = require('../../data/get_card')
 
 function load_tower(context, cmd, next) {
+	logger.log(context,"开始刷"+cmd[1]+"塔");
 	if (!context.data.user) { next(); return; }
         if (context.data.user.data.Energy < 2) {
 		logger.error(context, "没体力");
@@ -29,6 +30,7 @@ function load_tower(context, cmd, next) {
 		if (data.data.Clear == 1 && data.data.FreeReset == 1) {
 			reset_tower(context, cmd, next);
 		} else if (data.data.Clear == 1) {
+			logger.log(context,cmd[1]+"塔已经扫清");
 			next();
 		} else {
 			info_layer(context, cmd, data.data, 1, next)
