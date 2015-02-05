@@ -1,1 +1,3 @@
 !node_modules/express-session-json/lib/express-sessions.json
+*.json
+*.mkc
