@@ -3,8 +3,9 @@ var logger = require('../logger')
 var get_card = require('../../data/get_card')
 
 var awardTypes = {
-	'1': '金币',
-	'2': '钻石'
+	'1': function(n){return n + '金币'},
+	'2': function(n){return n + '钻石'},
+	'4': function(n){return get_card(n).value().CardName}, //卡牌
 }
 function pick_award(context, cmd, next) {
 	mk_command('user', context, {
@@ -28,7 +29,7 @@ function show_award(context, cmd, next) {
 		if (!err && data.status == 1) {
 			data.data.SalaryInfos.forEach(function(award){
 				console.log(award);
-				logger.log(context,"奖励："+ (awardTypes[award.AwardType] || award.AwardType) + (award.AwardValue ? award.AwardValue : JSON.stringify(award)) )
+				logger.log(context,"奖励："+(awardTypes[award.AwardType] ? awardTypes[award.AwardType](award.AwardValue) : JSON.stringify(award)));
 			})
 			if (data.data.SalaryInfos.length > 0)
 				pick_award(context, cmd, next)
