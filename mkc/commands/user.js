@@ -15,7 +15,7 @@ module.exports = function(context, cmd, next) {
 		}
 		context.data.user = data;
 		var user = data.data;
-		logger.log(context, user.NickName+' lv.'+user.Level+' 金币'+user.Coins+' 钻'+user.Cash+' 券'+user.Ticket+" 体力"+user.Energy);
+		logger.log(context, ' lv.'+user.Level+' 金币'+user.Coins+' 钻'+user.Cash+' 券'+user.Ticket+" 体力"+user.Energy);
 		next();
 	})
 }

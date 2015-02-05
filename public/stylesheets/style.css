@@ -5478,3 +5478,11 @@ div.radio.disabled:hover {
 /*margin style*/
 .ml2em{margin-left: 2em;}
 .fr{float: right; display: block;}
+
+red {
+  color: red;
+}
+
+green {
+  color: green;
+}

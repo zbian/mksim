@@ -82,7 +82,7 @@ block script
       var socket = io();
       App.init()
       socket.on('#{user.user}',function(msg){
-        $('#messages').prepend($('<li>').text(msg))
+        $('#messages').prepend($('<li>').append($("<span>"+msg+"</span>")))
       })
       $("#select_all_accounts").click(function(){
         $("input[name='account']").attr("checked", true);

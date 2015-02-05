@@ -46,18 +46,25 @@ router.post('/task', function(req, res, next){
   var usession = req.session.user;
   var user_setting = nconf.get(usession.user) || {};
 
-  var u = usession, c = {ID:"zbianr4", password:"ererer12"}
+  var u = usession
   console.log(req.body);
   var selected_accounts = typeof req.body.account == 'string' ? [req.body.account] : req.body.account;
   var accounts = _.chain(user_setting).filter(function(n){return _.indexOf(selected_accounts, n.ID) != -1}).values().sortBy(function(n){return n.enable}).value();
   console.log(accounts)
   var cmd = (req.body.script + ' ' + req.body.arguments).split(' ');
-  accounts.forEach(function(c){
+  // accounts.forEach(function(c){
+  
+  (function execute_next_cmd(acs,ptr) {
+    if (ptr >= accounts.length)
+      return;
+
+    var c = acs[ptr];
     logger.subscribe(parser,u,c,function(msg,data){
-      IoServer.emit(usession.user, msg + " - " + data);
+      IoServer.emit(usession.user, data);
     })
-    parser.execute(u,c,cmd);
-  })
+    parser.execute(u,c,cmd, function(){execute_next_cmd(accounts,ptr+1)});    
+  })(accounts, 0);
+
   res.send('{}');
 })
 module.exports = router;
