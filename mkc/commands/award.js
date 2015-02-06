@@ -16,10 +16,10 @@ function pick_award(context, cmd, next) {
 		if (!err && data.status == 1) {
 			logger.log(context,"奖励领取成功！" );
 			next();
+			return;
 		}
 		else next();
 	})
-	next();
 }
 function show_award(context, cmd, next) {
 	mk_command('user', context, {
