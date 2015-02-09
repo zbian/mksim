@@ -23,6 +23,7 @@ function load_tower(context, cmd, next) {
 		if (err || data.status != 1) {
 			logger.error(context,JSON.stringify(data));
 			next();
+			return;
 		}
 		if (!context.data.tower) context.data.tower={};
 		context.data.tower[cmd[1]] = data;

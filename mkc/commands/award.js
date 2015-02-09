@@ -20,7 +20,6 @@ function pick_award(context, cmd, next) {
 		}
 		else next();
 	})
-	next();
 }
 function show_award(context, cmd, next) {
 	mk_command('user', context, {
