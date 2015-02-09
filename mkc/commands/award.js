@@ -16,6 +16,7 @@ function pick_award(context, cmd, next) {
 		if (!err && data.status == 1) {
 			logger.log(context,"奖励领取成功！" );
 			next();
+			return;
 		}
 		else next();
 	})

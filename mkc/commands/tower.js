@@ -120,7 +120,7 @@ function do_battle(context, cmd, tower, layer, boxes, monsters, next){
 				console.log(Award);
 				var card = get_card(Award.CardId || undefined).value();
 				if (card && card.Color >= 4) {
-					logger.green(context,"卡牌: " + card.CardName);
+					logger.success(context,"卡牌: " + card.CardName);
 				}
 				do_battle(context, cmd, tower, layer, boxes, monsters, next);
 			}

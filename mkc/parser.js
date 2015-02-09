@@ -65,12 +65,22 @@ var PARSER = {
 			}
 		})
 	},
+	'keywords': {
+		'if' : require('./commands/if').if,
+		'else' : require('./commands/if').else,
+		'endif' : require('./commands/if').endif,
+	},
 	'commands' : {
 		'login' : require('./commands/login'),
 		'user': require('./commands/user'),
 		'debug': require('./commands/debug'),
 		'tower': require('./commands/tower'),
-		'award': require('./commands/award')
+		'award': require('./commands/award'),
+		'map': require('./commands/map'),
+		'arenaking-login' : require('./commands/arenaking').login,
+		'arenaking-info' : require('./commands/arenaking').info,
+		'arenaking-switch' : require('./commands/arenaking').switch,
+
 	},
 	'run_command' : function(context, next) {
 		if (context.idx >= context.cmds.length) {
@@ -83,13 +93,24 @@ var PARSER = {
 		var cmd = context.cmds[context.idx];
 		var major = cmd[0].toLowerCase();
 
-		if (PARSER.commands[major]) {
+		if (PARSER.keywords[major]) {
+			console.log("KWD", cmd);
+			PARSER.keywords[major](context, cmd, next);
+		}
+		else if (context.stack.length > 0 
+			&& context.stack[context.stack.length-1].checker 
+			&& !context.stack[context.stack.length-1].checker()){
+			console.log(
+				"SKIP", cmd)
+			next();
+		} 
+		else if (PARSER.commands[major]) {
 			console.log(
 				"RUN",cmd)
 			PARSER.commands[major](context, cmd, next);
 		} else {
 			console.log(
-				"SKIP", cmd)
+				"IGN", cmd)
 			next();
 		}
 	}

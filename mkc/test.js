@@ -7,4 +7,4 @@ logger.subscribe(parser,u,c,function(msg,data){
 parser.execute(
 	u,
 	c,
-	["tower-one","6"]);
+	["map"]);
